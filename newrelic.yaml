@@ -1,0 +1,23 @@
+---
+# 
+# Add the newrelic repository and license key, then install the newrelic system monitor
+#
+- hosts: all
+  user: ansible
+  sudo: yes
+  tasks:
+    - name: add newrelic repo to yum/apt
+      command: rpm -Uvh https://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm
+      ignore_errors: yes
+
+    - name: ensure newrelic-sysmond is installed
+      yum: name=newrelic-sysmond state=present
+
+    - name: update newrelic nrsysmond.cfg with license key
+      command: nrsysmond-config --set license_key=XYZ-ABC
+
+    - name: ensure proper permissions on nrsysmond.cfg file
+      command: file path=/etc/newrelic/nrsysmond.cfg mode=0640 owner=root group=newrelic
+
+    - name: start newrelic-sysmond
+      service: name=newrelic-sysmond state=started
