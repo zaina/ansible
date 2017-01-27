@@ -1,4 +1,0 @@
----
-# file: group_vars/all
-ansible_connection: paramiko
-ansible_ssh_user: root

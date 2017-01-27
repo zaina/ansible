@@ -1,0 +1,9 @@
+---
+- name: Get local weather info
+  hosts: localhost
+  connection: local
+  tasks:
+    - weather:
+        latitude: 35.7804
+        longitude: -78.6391 
+        api_key: "CHANGE_ME"

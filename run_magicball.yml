@@ -1,0 +1,7 @@
+---
+- name: 8 ball magic module
+  hosts: localhost
+  connection: local
+  tasks:
+    - magicball:
+        question: "How am I doing?" 
