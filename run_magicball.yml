@@ -4,4 +4,4 @@
   connection: local
   tasks:
     - magicball:
-        question: "How am I doing?" 
+        question: "{{ question | default('How am I doing?') }}" 
