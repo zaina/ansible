@@ -4,4 +4,4 @@
   connection: local
   tasks:
     - magicball:
-        question: "{{ question  }}" 
+        question: "Is it going to rain" 
